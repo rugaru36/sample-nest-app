@@ -1,0 +1,43 @@
+{
+  // Используйте IntelliSense, чтобы узнать о возможных атрибутах.
+  // Наведите указатель мыши, чтобы просмотреть описания существующих атрибутов.
+  // Для получения дополнительной информации посетите: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "sourceMaps": true,
+      "type": "node",
+      "request": "launch",
+      "name": "Nest Debug",
+      "runtimeExecutable": "/home/anton/.nvm/versions/node/v20.15.0/bin/npm",
+      "runtimeArgs": [
+        "run",
+        "start:debug",
+        "--",
+        "--inspect-brk"
+      ],
+      "console": "integratedTerminal",
+      "restart": true,
+      // "trace": true,
+      // "protocol": "auto",
+      // "port": 9229,
+      "autoAttachChildProcesses": true
+    },
+    // {
+    //   "type": "node",
+    //   "request": "launch",
+    //   "name": "TSC & RUN",
+    //   "skipFiles": [
+    //     "${workspaceFolder}/node_internals/**/*.js",
+    //     "<node_modules>/**"
+    //   ],
+    //   "program": "${workspaceFolder}/dist/app.js",
+    //   "cwd": "${workspaceFolder}/dist",
+    //   "preLaunchTask": "compile ts",
+    //   "envFile": "${workspaceFolder}/.env",
+    //   "outFiles": [
+    //     "${workspaceFolder}/**/*.js"
+    //   ]
+    // },
+  ]
+}
