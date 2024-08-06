@@ -1,13 +1,13 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from '../app.module';
-import { UserModelService } from '../common/model-modules/user/services/user.model-service';
-import { UserRoleEnum } from '../common/enums/user-role.enum';
+import { UserRoleEnum } from '../modules/user/domain/enums/user-role.enum';
+import { UserService } from '../modules/user/infrastructure/database/services/user.service';
 
 async function createAdmin(): Promise<void> {
   const app = await NestFactory.createApplicationContext(AppModule, {
     logger: ['error'],
   });
-  const userModelService = app.get(UserModelService);
+  const userModelService = app.get(UserService);
   const params: { [key: string]: any } = {};
   process.argv.slice(2).forEach((param) => {
     const [key, val] = param.split('=');

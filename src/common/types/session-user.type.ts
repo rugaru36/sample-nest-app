@@ -1,4 +1,4 @@
-import { UserRoleEnum } from '../enums/user-role.enum';
+import { UserRoleEnum } from '../../modules/user/domain/enums/user-role.enum';
 
 export type SessionUserType = {
   id: number;
