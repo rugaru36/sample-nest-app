@@ -1,4 +1,4 @@
-import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { UserRepository } from '../repositories/user.repository';
 import { UserModel } from '../models/user.model';
 import { Transaction } from 'sequelize';
@@ -40,7 +40,7 @@ export class UserService {
         [isEmailHelper(login) ? 'login' : 'email']: login,
       },
     });
-    if (!user) throw new NotFoundException();
+    if (!user) return null;
     const isValidPassword =
       await this.passwordService.compareRawPasswordWithHash(
         user.password,

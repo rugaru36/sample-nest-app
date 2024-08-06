@@ -43,7 +43,7 @@ export class UserRepository {
   }
 
   public async getOne(findOptions: FindOptions<UserModel>): Promise<UserModel> {
-    return await this.userModel.findOne(findOptions);
+    return (await this.userModel.findOne(findOptions)) || null;
   }
 
   public async getCount(options?: CountOptions<UserModel>): Promise<number> {
