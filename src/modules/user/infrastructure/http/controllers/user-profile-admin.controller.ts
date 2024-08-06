@@ -1,16 +1,16 @@
 import { Controller, Inject, Query, UseGuards } from '@nestjs/common';
 import { UserRoleEnum } from '../../../domain/enums/user-role.enum';
 import { Get } from '@nestjs/common';
-import { GetAllUsersResDtoInterface } from '../dto-interfaces/get-all-users.dto-interface';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { GetAllUsersResDoc } from '../docs/get-all-users.doc';
-import { GetAllUsersReqDto } from './dto/get-all-users.dto';
+import { GetAllUsersResDoc } from '../docs/user-profile-admin/get-all-users.doc';
+import { GetAllUsersReqDto } from '../dto/user-profile-admin/get-all-users.dto';
 import { UserProfileAdminService } from '../services/user-profile-admin.service';
 import { AuthenticatedGuard } from '../../../../auth/infrastructure/http/guards/authenticated.guard';
 import { Roles } from '../../../../auth/infrastructure/http/decorators/role.decorator';
+import { GetAllUsersResDtoInterface } from '../dto-interfaces/user-profile-admin/get-all-users.dto-interface';
 
 @ApiTags('all user methods')
-@Controller('user')
+@Controller('user/admin')
 export class UserProfileAdminController {
   @Inject(UserProfileAdminService)
   private readonly userProfileAdminService: UserProfileAdminService;

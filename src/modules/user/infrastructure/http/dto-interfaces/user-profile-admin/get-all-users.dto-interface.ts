@@ -1,4 +1,4 @@
-import { GetOneUserResDtoInterface } from './get-one-user.dto-interface';
+import { GetOneUserResDtoInterface } from '../user-profile/get-one-user.dto-interface';
 
 // --------------------- req ---------------------
 export interface GetAllUsersReqDtoInterface {

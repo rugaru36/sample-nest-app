@@ -1,10 +1,10 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { UserRepository } from '../../infrastructure/database/repositories/user.repository';
+import { UserRepository } from '../../../infrastructure/database/repositories/user.repository';
+import { UserProfileResolver } from '../../resolvers/user-profile.resolver';
 import {
   GetAllUsersReqDtoInterface,
   GetAllUsersResDtoInterface,
-} from '../../infrastructure/http/dto-interfaces/get-all-users.dto-interface';
-import { UserProfileResolver } from '../resolvers/user-profile.resolver';
+} from '../../../infrastructure/http/dto-interfaces/user-profile-admin/get-all-users.dto-interface';
 
 @Injectable()
 export class GetAllProfilesUseCase {

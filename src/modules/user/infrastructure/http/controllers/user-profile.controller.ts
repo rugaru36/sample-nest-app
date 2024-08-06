@@ -8,9 +8,9 @@ import {
 import { Get } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { SessionUserType } from '../../../../auth/infrastructure/http/types/session-user.type';
-import { GetOneUserResDtoInterface } from '../dto-interfaces/get-one-user.dto-interface';
+import { GetOneUserResDtoInterface } from '../dto-interfaces/user-profile/get-one-user.dto-interface';
 import { Request } from 'express';
-import { GetOneUserResDoc } from '../docs/get-one-user.doc';
+import { GetOneUserResDoc } from '../docs/user-profile/get-one-user.doc';
 import { UserProfileService } from '../services/user-profile.service';
 import { AuthenticatedGuard } from '../../../../auth/infrastructure/http/guards/authenticated.guard';
 

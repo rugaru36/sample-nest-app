@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { GetOneUserResDtoInterface } from '../dto-interfaces/get-one-user.dto-interface';
+import { GetOneUserResDtoInterface } from '../../dto-interfaces/user-profile/get-one-user.dto-interface';
 
 export class GetOneUserResDoc implements GetOneUserResDtoInterface {
   @ApiProperty({ type: Number })
