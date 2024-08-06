@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { GetOneUserResInterface } from '../interfaces/get-one-user.interface';
+import { GetOneUserResDtoInterface } from '../dto-interfaces/get-one-user.dto-interface';
 
-export class GetOneUserResDoc implements GetOneUserResInterface {
+export class GetOneUserResDoc implements GetOneUserResDtoInterface {
   @ApiProperty({ type: Number })
   public id: number;
   @ApiProperty({ type: String })

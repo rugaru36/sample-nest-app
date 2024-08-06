@@ -1,8 +1,8 @@
 import { IsBoolean, IsInt } from 'class-validator';
 import { Transform } from 'class-transformer';
-import { GetAllUsersReqInterface } from '../../interfaces/get-all-users.interface';
+import { GetAllUsersReqDtoInterface } from '../../dto-interfaces/get-all-users.dto-interface';
 
-export class GetAllUsersReqDto implements GetAllUsersReqInterface {
+export class GetAllUsersReqDto implements GetAllUsersReqDtoInterface {
   @IsBoolean()
   @Transform(({ value }) => value == 'true')
   withTotalCount: boolean;

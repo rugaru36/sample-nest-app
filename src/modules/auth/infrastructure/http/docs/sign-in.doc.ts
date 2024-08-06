@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { SignInDtoInterface } from '../interfaces/sign-in.req-interface';
+import { SignInReqDtoInterface } from '../dto-interfaces/sign-in.dto-interface';
 
-export class SignInReqDoc implements SignInDtoInterface {
+export class SignInReqDoc implements SignInReqDtoInterface {
   @ApiProperty({ type: String })
   public login: string;
   @ApiProperty({ type: String })

@@ -8,7 +8,7 @@ import {
 import { Get } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { SessionUserType } from '../../../../auth/infrastructure/http/types/session-user.type';
-import { GetOneUserResInterface } from '../interfaces/get-one-user.interface';
+import { GetOneUserResDtoInterface } from '../dto-interfaces/get-one-user.dto-interface';
 import { Request } from 'express';
 import { GetOneUserResDoc } from '../docs/get-one-user.doc';
 import { UserProfileService } from '../services/user-profile.service';
@@ -26,7 +26,7 @@ export class UserProfileController {
   @Get('my-account')
   public async getMyAccount(
     @Req() req: Request,
-  ): Promise<GetOneUserResInterface> {
+  ): Promise<GetOneUserResDtoInterface> {
     const userId = (req.user as SessionUserType)?.id || null;
     if (!userId) throw new ForbiddenException();
     return await this.userProfileService.getMyProfile(userId);

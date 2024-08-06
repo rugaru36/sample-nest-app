@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { GetOneUserResInterface } from '../../infrastructure/http/interfaces/get-one-user.interface';
+import { GetOneUserResDtoInterface } from '../../infrastructure/http/dto-interfaces/get-one-user.dto-interface';
 import { UserModel } from '../../infrastructure/database/models/user.model';
 
 @Injectable()
 export class UserProfileResolver {
-  public single(user: UserModel): GetOneUserResInterface {
+  public single(user: UserModel): GetOneUserResDtoInterface {
     return {
       id: user.id,
       is_verified: !!user.is_verified,
@@ -14,7 +14,7 @@ export class UserProfileResolver {
     };
   }
 
-  public list(users: UserModel[]): GetOneUserResInterface[] {
+  public list(users: UserModel[]): GetOneUserResDtoInterface[] {
     return users.map((u) => this.single(u));
   }
 }

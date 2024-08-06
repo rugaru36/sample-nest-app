@@ -1,7 +1,7 @@
 import { Controller, Inject, Query, UseGuards } from '@nestjs/common';
 import { UserRoleEnum } from '../../../domain/enums/user-role.enum';
 import { Get } from '@nestjs/common';
-import { GetAllUsersResInterface } from '../interfaces/get-all-users.interface';
+import { GetAllUsersResDtoInterface } from '../dto-interfaces/get-all-users.dto-interface';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { GetAllUsersResDoc } from '../docs/get-all-users.doc';
 import { GetAllUsersReqDto } from './dto/get-all-users.dto';
@@ -22,7 +22,7 @@ export class UserProfileAdminController {
   @Get('all')
   public async getAllUsers(
     @Query() q: GetAllUsersReqDto,
-  ): Promise<GetAllUsersResInterface> {
+  ): Promise<GetAllUsersResDtoInterface> {
     return await this.userProfileAdminService.getAllProfiles(q);
   }
 }

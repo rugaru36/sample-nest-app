@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { SignUpReqDtoInterface } from '../interfaces/sign-up.req-interface';
+import { SignUpReqDtoInterface } from '../dto-interfaces/sign-up.dto-interface';
 
 export class SignUpReqDoc implements SignUpReqDtoInterface {
   @ApiProperty({ type: String })

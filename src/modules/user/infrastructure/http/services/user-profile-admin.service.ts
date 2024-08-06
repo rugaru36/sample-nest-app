@@ -1,9 +1,9 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { GetAllProfilesUseCase } from '../../../application/use-cases/get-all-profiles.use-case';
 import {
-  GetAllUsersReqInterface,
-  GetAllUsersResInterface,
-} from '../interfaces/get-all-users.interface';
+  GetAllUsersReqDtoInterface,
+  GetAllUsersResDtoInterface,
+} from '../dto-interfaces/get-all-users.dto-interface';
 
 @Injectable()
 export class UserProfileAdminService {
@@ -11,8 +11,8 @@ export class UserProfileAdminService {
   private readonly getAllProfilesUseCase: GetAllProfilesUseCase;
 
   public async getAllProfiles(
-    q: GetAllUsersReqInterface,
-  ): Promise<GetAllUsersResInterface> {
+    q: GetAllUsersReqDtoInterface,
+  ): Promise<GetAllUsersResDtoInterface> {
     return await this.getAllProfilesUseCase.exec(q);
   }
 }

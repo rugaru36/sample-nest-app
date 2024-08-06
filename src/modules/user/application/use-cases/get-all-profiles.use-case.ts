@@ -1,9 +1,9 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { UserRepository } from '../../infrastructure/database/repositories/user.repository';
 import {
-  GetAllUsersReqInterface,
-  GetAllUsersResInterface,
-} from '../../infrastructure/http/interfaces/get-all-users.interface';
+  GetAllUsersReqDtoInterface,
+  GetAllUsersResDtoInterface,
+} from '../../infrastructure/http/dto-interfaces/get-all-users.dto-interface';
 import { UserProfileResolver } from '../resolvers/user-profile.resolver';
 
 @Injectable()
@@ -14,10 +14,10 @@ export class GetAllProfilesUseCase {
   private readonly userProfileResolver: UserProfileResolver;
 
   public async exec(
-    q: GetAllUsersReqInterface,
-  ): Promise<GetAllUsersResInterface> {
+    q: GetAllUsersReqDtoInterface,
+  ): Promise<GetAllUsersResDtoInterface> {
     const { limit, page } = q;
-    const result: GetAllUsersResInterface = {
+    const result: GetAllUsersResDtoInterface = {
       users: this.userProfileResolver.list(
         await this.userRepository.getAllUsers({ page, limit }),
       ),

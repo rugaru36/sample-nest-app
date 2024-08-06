@@ -1,5 +1,5 @@
 import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
-import { SignUpReqDtoInterface } from '../interfaces/sign-up.req-interface';
+import { SignUpReqDtoInterface } from '../dto-interfaces/sign-up.dto-interface';
 
 export class SignUpReqDto implements SignUpReqDtoInterface {
   @IsString()

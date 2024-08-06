@@ -1,11 +1,11 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { GetOneUserResDoc } from './get-one-user.doc';
-import { GetAllUsersResInterface } from '../interfaces/get-all-users.interface';
-import { GetOneUserResInterface } from '../interfaces/get-one-user.interface';
+import { GetAllUsersResDtoInterface } from '../dto-interfaces/get-all-users.dto-interface';
+import { GetOneUserResDtoInterface } from '../dto-interfaces/get-one-user.dto-interface';
 
-export class GetAllUsersResDoc implements GetAllUsersResInterface {
+export class GetAllUsersResDoc implements GetAllUsersResDtoInterface {
   @ApiPropertyOptional({ type: Number })
   public totalCount?: number;
   @ApiProperty({ type: GetOneUserResDoc, isArray: true })
-  public users: GetOneUserResInterface[];
+  public users: GetOneUserResDtoInterface[];
 }

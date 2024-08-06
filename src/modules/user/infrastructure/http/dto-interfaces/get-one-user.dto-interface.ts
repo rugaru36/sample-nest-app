@@ -1,5 +1,5 @@
 // --------------------- res ---------------------
-export interface GetOneUserResInterface {
+export interface GetOneUserResDtoInterface {
   id: number;
   is_verified: boolean;
   login: string;

@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { UserService } from '../../../user/infrastructure/database/services/user.service';
-import { SignUpReqDtoInterface } from '../../infrastructure/http/interfaces/sign-up.req-interface';
+import { SignUpReqDtoInterface } from '../../infrastructure/http/dto-interfaces/sign-up.dto-interface';
 
 @Injectable()
 export class SignUpUseCase {

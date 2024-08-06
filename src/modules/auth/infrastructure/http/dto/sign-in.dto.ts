@@ -1,8 +1,8 @@
 import { IsString } from 'class-validator';
-import { SignInDtoInterface } from '../interfaces/sign-in.req-interface';
+import { SignInReqDtoInterface } from '../dto-interfaces/sign-in.dto-interface';
 import { ApiProperty } from '@nestjs/swagger';
 
-export class SignInReqDto implements SignInDtoInterface {
+export class SignInReqDto implements SignInReqDtoInterface {
   @IsString()
   @ApiProperty({ type: String })
   public login: string;
