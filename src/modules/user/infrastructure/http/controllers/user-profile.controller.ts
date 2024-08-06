@@ -7,7 +7,7 @@ import {
 } from '@nestjs/common';
 import { Get } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { SessionUserType } from '../../../../../common/types/session-user.type';
+import { SessionUserType } from '../../../../auth/infrastructure/http/types/session-user.type';
 import { GetOneUserResInterface } from '../interfaces/get-one-user.interface';
 import { Request } from 'express';
 import { GetOneUserResDoc } from '../docs/get-one-user.doc';

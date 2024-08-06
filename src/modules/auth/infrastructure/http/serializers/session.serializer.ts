@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 import { PassportSerializer } from '@nestjs/passport';
 import { UserService } from '../../../../user/infrastructure/database/services/user.service';
-import { SessionUserType } from '../../../../../common/types/session-user.type';
+import { SessionUserType } from '../types/session-user.type';
 import { UserModel } from '../../../../user/infrastructure/database/models/user.model';
 
 @Injectable()
