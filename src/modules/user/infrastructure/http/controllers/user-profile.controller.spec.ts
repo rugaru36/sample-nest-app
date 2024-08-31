@@ -53,4 +53,11 @@ describe('user gets his account data', () => {
       controller.getMyAccount(testRequestWithSessionUser),
     ).resolves.toEqual(testUserProfile);
   });
+
+  it('throws forbidden exception', async () => {
+    expect(
+      controller.getMyAccount(testRequestWithNoSessionUser),
+    ).rejects.toBeInstanceOf(ForbiddenException);
+    // await controller.getMyAccount()
+  });
 });
