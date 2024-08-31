@@ -37,7 +37,7 @@ const testResGetAllUsersResultWithCount: GetAllUsersResDtoInterface =
     Pick<GetAllUsersResDtoInterface, 'totalCount'>
   >(tesRestGetAllUsersResultWithNoCount, { totalCount: 123 });
 
-describe('getting user profiles as admin controller', () => {
+describe('Admin gets user profiles', () => {
   let controller: UserProfileAdminController;
   let service: UserProfileAdminService;
 
@@ -63,7 +63,7 @@ describe('getting user profiles as admin controller', () => {
     service = modRef.get(UserProfileAdminService);
   });
 
-  it('Admin: gets all user profiles with total count', async () => {
+  it('returns user profiles with total count', async () => {
     await controller.getAllUsers(testReqGetAllWithCount);
     expect(service.getAllProfiles).toHaveBeenCalled();
     expect(controller.getAllUsers(testReqGetAllWithCount)).resolves.toEqual(
@@ -71,7 +71,7 @@ describe('getting user profiles as admin controller', () => {
     );
   });
 
-  it('Admin: get all user profiles without total count', async () => {
+  it('returns user profiles with no total count', async () => {
     await controller.getAllUsers(testReqGetAllWithNoCount);
     expect(service.getAllProfiles).toHaveBeenCalled();
     expect(controller.getAllUsers(testReqGetAllWithNoCount)).resolves.toEqual(

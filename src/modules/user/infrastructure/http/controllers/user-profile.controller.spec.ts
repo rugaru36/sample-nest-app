@@ -5,6 +5,7 @@ import { UserProfileEntityInterface } from '../../../domain/entity-interfaces/us
 import { SessionUserType } from '../../../../auth/infrastructure/http/types/session-user.type';
 import { UserRoleEnum } from '../../../domain/enums/user-role.enum';
 import { Request } from 'express';
+import { ForbiddenException } from '@nestjs/common';
 
 const testSessionUser: SessionUserType = {
   id: 4,
@@ -16,6 +17,8 @@ const testRequestWithSessionUser: Request = {
   user: testSessionUser,
 } as any as Request;
 
+const testRequestWithNoSessionUser: Request = {} as any as Request;
+
 const testUserProfile: UserProfileEntityInterface = {
   id: testSessionUser.id,
   is_verified: true,
@@ -24,7 +27,7 @@ const testUserProfile: UserProfileEntityInterface = {
   last_login: new Date(),
 };
 
-describe('user gets his account data', () => {
+describe('User account data', () => {
   let controller: UserProfileController;
   let service: UserProfileService;
 
@@ -46,7 +49,7 @@ describe('user gets his account data', () => {
     service = modRef.get(UserProfileService);
   });
 
-  it('user gets', async () => {
+  it('returns user profile', async () => {
     await controller.getMyAccount(testRequestWithSessionUser);
     expect(service.getMyProfile).toHaveBeenCalled();
     expect(
