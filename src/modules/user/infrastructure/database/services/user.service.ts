@@ -1,20 +1,20 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { UserRepository } from '../repositories/user.repository';
 import { UserModel } from '../models/user.model';
 import { Transaction } from 'sequelize';
 import { PasswordService } from '../../../application/services/password.service';
 import { UserRoleEnum } from '../../../domain/enums/user-role.enum';
 import { isEmailHelper } from '../../../../../common/helpers/is-email.helper';
+import { InjectModel } from '@nestjs/sequelize';
 
 @Injectable()
 export class UserService {
   @Inject(PasswordService)
   private readonly passwordService: PasswordService;
-  @Inject(UserRepository)
-  private readonly userRepository: UserRepository;
+  @InjectModel(UserModel)
+  private readonly userModel: typeof UserModel;
 
   public async getById(id: number): Promise<UserModel> {
-    return await this.userRepository.getById(id);
+    return await this.userModel.findByPk(id);
   }
 
   public async createUser(
@@ -28,14 +28,14 @@ export class UserService {
       data.password_salt,
     );
     data.role = data.role || UserRoleEnum.user;
-    return await this.userRepository.createUser(data, transaction);
+    return await this.userModel.create(data, { transaction });
   }
 
   public async checkPassword(
     login: string,
     password: string,
   ): Promise<UserModel> {
-    const user = await this.userRepository.getOne({
+    const user = await this.userModel.findOne({
       where: {
         [isEmailHelper(login) ? 'login' : 'email']: login,
       },
@@ -51,7 +51,8 @@ export class UserService {
     return user;
   }
 
-  public async updateLastLogin(userId: number): Promise<void> {
-    await this.userRepository.updateUser({ last_login: new Date() }, userId);
+  public async updateLastLogin(id: number): Promise<UserModel> {
+    const user = await this.userModel.findByPk(id);
+    return await user.update({ last_login: new Date() });
   }
 }
