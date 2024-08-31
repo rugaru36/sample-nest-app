@@ -1,14 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import { GetOneUserResDtoInterface } from '../../infrastructure/http/dto-interfaces/user-profile/get-one-user.dto-interface';
-import { UserModel } from '../../infrastructure/database/models/user.model';
-import { CommonMapperInterface } from '../../../../common/interfaces/common-resolver.interface';
-import { UserProfileEntityInterface } from '../../domain/entity-interfaces/user-profile.entity-interface';
+import { CommonMapperInterface } from '../../../../common/interfaces/common-mapper.interface';
+import { UserShortDataInterface } from '../../domain/data-interfaces/user-short-data.interface';
+import { UserInterface } from '../../domain/data-interfaces/user.interface';
 
 @Injectable()
 export class UserProfileMapper
-  implements CommonMapperInterface<UserModel, UserProfileEntityInterface>
+  implements CommonMapperInterface<UserInterface, UserShortDataInterface>
 {
-  public single(user: UserModel): GetOneUserResDtoInterface {
+  public single(user: UserInterface): UserShortDataInterface {
     return {
       id: user.id,
       is_verified: !!user.is_verified,
@@ -18,7 +17,7 @@ export class UserProfileMapper
     };
   }
 
-  public list(users: UserModel[]): GetOneUserResDtoInterface[] {
+  public list(users: UserInterface[]): UserShortDataInterface[] {
     return users.map((u) => this.single(u));
   }
 }

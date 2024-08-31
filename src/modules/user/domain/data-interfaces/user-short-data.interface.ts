@@ -1,4 +1,4 @@
-export interface UserProfileEntityInterface {
+export interface UserShortDataInterface {
   id: number;
   is_verified: boolean;
   login: string;

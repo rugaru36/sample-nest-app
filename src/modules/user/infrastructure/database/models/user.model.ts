@@ -8,6 +8,7 @@ import {
 } from 'sequelize-typescript';
 import { DATE, ENUM, INTEGER, STRING, TINYINT } from 'sequelize';
 import { UserRoleEnum } from '../../../domain/enums/user-role.enum';
+import { UserInterface } from '../../../domain/data-interfaces/user.interface';
 
 @Table({
   tableName: 'Users',
@@ -16,7 +17,7 @@ import { UserRoleEnum } from '../../../domain/enums/user-role.enum';
   createdAt: 'created_at',
   updatedAt: 'updated_at',
 })
-export class UserModel extends Model<UserModel> {
+export class UserModel extends Model<UserModel> implements UserInterface {
   @Column({
     type: INTEGER,
     primaryKey: true,

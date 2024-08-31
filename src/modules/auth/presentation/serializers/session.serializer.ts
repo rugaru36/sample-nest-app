@@ -5,14 +5,15 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { PassportSerializer } from '@nestjs/passport';
-import { UserService } from '../../../../user/infrastructure/database/services/user.service';
 import { SessionUserType } from '../types/session-user.type';
-import { UserModel } from '../../../../user/infrastructure/database/models/user.model';
+import { UserModel } from '../../../user/infrastructure/database/models/user.model';
+import { UserFindQueryBuilder } from '../../../user/infrastructure/database/query-builders/user-find.query-builder';
+import { UserInterface } from '../../../user/domain/data-interfaces/user.interface';
 
 @Injectable()
 export class SessionSerializer extends PassportSerializer {
-  @Inject(UserService)
-  private readonly userService: UserService;
+  @Inject(UserFindQueryBuilder)
+  private readonly userFindQueryBuilder: UserFindQueryBuilder;
 
   serializeUser(
     user: UserModel,
@@ -37,13 +38,14 @@ export class SessionSerializer extends PassportSerializer {
 
   async deserializeUser(
     payload: any,
-    done: (err: Error, payload: UserModel) => void,
+    done: (err: Error, payload: UserInterface) => void,
   ): Promise<any> {
     try {
       if (payload.id) {
-        const user = await (async () => {
-          return await this.userService.getById(payload.id);
-        })();
+        const user = await this.userFindQueryBuilder
+          .build()
+          .byId(payload.id)
+          .runFindOne();
         return done(null, user);
       }
       return done(

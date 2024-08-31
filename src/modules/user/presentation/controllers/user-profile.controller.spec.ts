@@ -1,9 +1,9 @@
 import { Test } from '@nestjs/testing';
 import { UserProfileService } from '../services/user-profile.service';
 import { UserProfileController } from './user-profile.controller';
-import { UserProfileEntityInterface } from '../../../domain/entity-interfaces/user-profile.entity-interface';
-import { SessionUserType } from '../../../../auth/infrastructure/http/types/session-user.type';
-import { UserRoleEnum } from '../../../domain/enums/user-role.enum';
+import { UserShortDataInterface } from '../../domain/data-interfaces/user-short-data.interface';
+import { SessionUserType } from '../../../auth/presentation/types/session-user.type';
+import { UserRoleEnum } from '../../domain/enums/user-role.enum';
 import { Request } from 'express';
 import { ForbiddenException } from '@nestjs/common';
 
@@ -19,7 +19,7 @@ const testRequestWithSessionUser: Request = {
 
 const testRequestWithNoSessionUser: Request = {} as any as Request;
 
-const testUserProfile: UserProfileEntityInterface = {
+const testUserProfile: UserShortDataInterface = {
   id: testSessionUser.id,
   is_verified: true,
   login: testSessionUser.login,

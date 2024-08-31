@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { GetAllProfilesUseCase } from '../../../application/use-cases/user-profile-admin/get-all-profiles.use-case';
+import { GetAllProfilesUseCase } from '../../application/use-cases/user-profile-admin/get-all-profiles.use-case';
 import {
   GetAllUsersReqDtoInterface,
   GetAllUsersResDtoInterface,

@@ -1,18 +1,21 @@
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
-import { UserProfileEntityInterface } from '../../../domain/entity-interfaces/user-profile.entity-interface';
+import { UserShortDataInterface } from '../../../domain/data-interfaces/user-short-data.interface';
 import { UserProfileMapper } from '../../mappers/user-profile.mapper';
-import { UserService } from '../../../infrastructure/database/services/user.service';
+import { UserFindQueryBuilder } from '../../../infrastructure/database/query-builders/user-find.query-builder';
 
 @Injectable()
 export class GetMyProfileUseCase {
-  @Inject(UserService)
-  private readonly userRepository: UserService;
+  @Inject(UserFindQueryBuilder)
+  private readonly userFindQueryBuilder: UserFindQueryBuilder;
   @Inject(UserProfileMapper)
-  private readonly userProfileResolver: UserProfileMapper;
+  private readonly userProfileMapper: UserProfileMapper;
 
-  public async exec(userId: number): Promise<UserProfileEntityInterface> {
-    const user = await this.userRepository.getById(userId);
+  public async exec(userId: number): Promise<UserShortDataInterface> {
+    const user = await this.userFindQueryBuilder
+      .build()
+      .byId(userId)
+      .runFindOne();
     if (!user) throw new NotFoundException();
-    return this.userProfileResolver.single(user);
+    return this.userProfileMapper.single(user);
   }
 }
