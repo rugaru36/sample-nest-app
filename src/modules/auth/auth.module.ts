@@ -9,7 +9,6 @@ import { LocalAuthGuard } from './presentation/guards/local-auth.guard';
 import { RolesGuard } from './presentation/guards/role.guard';
 import { SessionSerializer } from './presentation/serializers/session.serializer';
 import { LocalStrategy } from './presentation/strategy/local.strategy';
-import { SignUpUseCase } from './application/use-cases/sign-up.use-case';
 import { SignInUseCase } from './application/use-cases/sign-in.use-case';
 import { AuthService } from './presentation/services/auth.service';
 
@@ -21,7 +20,6 @@ import { AuthService } from './presentation/services/auth.service';
   ],
   controllers: [AuthController],
   providers: [
-    SignUpUseCase,
     SignInUseCase,
 
     AuthService,

@@ -12,6 +12,7 @@ import { UserFindQueryBuilder } from './infrastructure/database/query-builders/u
 import { UserUpdateQueryBuilder } from './infrastructure/database/query-builders/user-update.query-builder';
 import { UserCreateQueryBuilder } from './infrastructure/database/query-builders/user-create.query-builder';
 import { UserCountQueryBuilder } from './infrastructure/database/query-builders/user-count.query-builder';
+import { RegistrateUseCase } from './application/use-cases/user-profile/user-registrate.use-case';
 
 @Module({
   imports: [SequelizeModule.forFeature([UserModel])],
@@ -29,6 +30,7 @@ import { UserCountQueryBuilder } from './infrastructure/database/query-builders/
 
     GetAllProfilesUseCase,
     GetMyProfileUseCase,
+    RegistrateUseCase,
   ],
   exports: [
     UserPasswordService,

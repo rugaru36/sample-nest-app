@@ -1,7 +1,7 @@
 import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
-import { SignUpReqDtoInterface } from '../dto-interfaces/sign-up.dto-interface';
+import { RegistrateReqDtoInterface } from '../dto-interfaces/sign-up.dto-interface';
 
-export class SignUpReqDto implements SignUpReqDtoInterface {
+export class RegistrateReqDto implements RegistrateReqDtoInterface {
   @IsString()
   @IsNotEmpty()
   public login: string;

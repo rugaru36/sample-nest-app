@@ -9,7 +9,7 @@
       "type": "node",
       "request": "launch",
       "name": "Nest Debug",
-      "runtimeExecutable": "/home/anton/.nvm/versions/node/v20.15.0/bin/npm",
+      "runtimeExecutable": "/home/anton/.nvm/versions/node/v20.16.0/bin/npm",
       "runtimeArgs": [
         "run",
         "start:debug",

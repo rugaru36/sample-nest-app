@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { SignUpReqDtoInterface } from '../dto-interfaces/sign-up.dto-interface';
+import { RegistrateReqDtoInterface } from '../dto-interfaces/sign-up.dto-interface';
 
-export class SignUpReqDoc implements SignUpReqDtoInterface {
+export class RegistrateReqDoc implements RegistrateReqDtoInterface {
   @ApiProperty({ type: String })
   public email: string;
   @ApiProperty({ type: String })
