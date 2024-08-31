@@ -1,20 +1,35 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { UserModel } from '../models/user.model';
-import { Transaction } from 'sequelize';
-import { PasswordService } from '../../../application/services/password.service';
+import { CountOptions, FindOptions, Transaction } from 'sequelize';
+import { UserPasswordService } from '../../../application/services/user-password.service';
 import { UserRoleEnum } from '../../../domain/enums/user-role.enum';
 import { isEmailHelper } from '../../../../../common/helpers/is-email.helper';
 import { InjectModel } from '@nestjs/sequelize';
 
 @Injectable()
 export class UserService {
-  @Inject(PasswordService)
-  private readonly passwordService: PasswordService;
+  @Inject(UserPasswordService)
+  private readonly passwordService: UserPasswordService;
   @InjectModel(UserModel)
   private readonly userModel: typeof UserModel;
 
-  public async getById(id: number): Promise<UserModel> {
-    return await this.userModel.findByPk(id);
+  public async getById(
+    id: number,
+    findOptions: FindOptions<UserModel> = {},
+  ): Promise<UserModel> {
+    return await this.userModel.findByPk(id, findOptions);
+  }
+
+  public async getCount(
+    countOptions: CountOptions<UserModel> = {},
+  ): Promise<number> {
+    return await this.userModel.count(countOptions);
+  }
+
+  public async getAll(
+    findOptions: FindOptions<UserModel> = {},
+  ): Promise<UserModel[]> {
+    return await this.userModel.findAll(findOptions);
   }
 
   public async createUser(

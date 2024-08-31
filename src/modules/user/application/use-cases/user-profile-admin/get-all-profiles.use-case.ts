@@ -1,17 +1,18 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { UserRepository } from '../../../infrastructure/database/repositories/user.repository';
-import { UserProfileResolver } from '../../resolvers/user-profile.resolver';
+import { UserProfileMapper } from '../../mappers/user-profile.mapper';
 import {
   GetAllUsersReqDtoInterface,
   GetAllUsersResDtoInterface,
 } from '../../../infrastructure/http/dto-interfaces/user-profile-admin/get-all-users.dto-interface';
+import { UserService } from '../../../infrastructure/database/services/user.service';
+import { getPaginationHelper } from '../../../../../common/helpers/pagination.helper';
 
 @Injectable()
 export class GetAllProfilesUseCase {
-  @Inject(UserRepository)
-  private readonly userRepository: UserRepository;
-  @Inject(UserProfileResolver)
-  private readonly userProfileResolver: UserProfileResolver;
+  @Inject(UserService)
+  private readonly userService: UserService;
+  @Inject(UserProfileMapper)
+  private readonly userProfileResolver: UserProfileMapper;
 
   public async exec(
     q: GetAllUsersReqDtoInterface,
@@ -19,11 +20,11 @@ export class GetAllProfilesUseCase {
     const { limit, page } = q;
     const result: GetAllUsersResDtoInterface = {
       users: this.userProfileResolver.list(
-        await this.userRepository.getAllUsers({ page, limit }),
+        await this.userService.getAll(getPaginationHelper(limit, page)),
       ),
     };
     if (q.withTotalCount) {
-      result.totalCount = await this.userRepository.getCount();
+      result.totalCount = await this.userService.getCount();
     }
     return result;
   }

@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { GetOneUserResDtoInterface } from '../../infrastructure/http/dto-interfaces/user-profile/get-one-user.dto-interface';
 import { UserModel } from '../../infrastructure/database/models/user.model';
-import { CommonResolverInterface } from '../../../../common/interfaces/common-resolver.interface';
+import { CommonMapperInterface } from '../../../../common/interfaces/common-resolver.interface';
 import { UserProfileEntityInterface } from '../../domain/entity-interfaces/user-profile.entity-interface';
 
 @Injectable()
-export class UserProfileResolver
-  implements CommonResolverInterface<UserModel, UserProfileEntityInterface>
+export class UserProfileMapper
+  implements CommonMapperInterface<UserModel, UserProfileEntityInterface>
 {
   public single(user: UserModel): GetOneUserResDtoInterface {
     return {

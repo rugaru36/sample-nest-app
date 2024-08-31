@@ -1,4 +1,4 @@
-export interface CommonResolverInterface<Input, Output> {
+export interface CommonMapperInterface<Input, Output> {
   single(d: Input): Output;
   list(d: Input[]): Output[];
 }
