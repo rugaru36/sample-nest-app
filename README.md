@@ -1,3 +1,5 @@
+<h4>Попытка максимально развести бизнес-логику и инфраструктурный слой, чтобы за слоем абстракции первый ничего не знал о втором.</h4>
+<br>
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
